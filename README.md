@@ -103,11 +103,43 @@ A class representing an individual item in a depreciation schedule, containing t
 Usage
 -----
 
+Here's an updated version of the usage section, providing step-by-step instructions on how to use the FinancialCalcLib library:
+
 1.  **Create an `Asset` object with an associated depreciation calculator:**
-    
-    csharpCopy code
-    
-    `Asset asset = new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5));`
-    
+
+csharpCopy code
+
+`Asset asset = new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5));`
+
 2.  **Calculate the depreciation schedule for an asset:**
+
+csharpCopy code
+
+`List<DepreciationScheduleItem> schedule = asset.DepreciationCalculator.CalculateDepreciationSchedule(5);`
+
+3.  **Calculate the depreciation schedule for multiple assets concurrently:**
+
+csharpCopy code
+
+`List<Asset> assets = new List<Asset> {     new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5)),     new Asset(2, "Printer", new DoubleDecliningBalanceDepreciation(500, 50, 5)) };  Dictionary<int, List<DepreciationScheduleItem>> schedules = DepreciationCalculatorExtensions.CalculateDepreciationSchedulesConcurrently(assets, 5);`
+
+4.  **Calculate the depreciation schedule for multiple assets asynchronously:**
+
+csharpCopy code
+
+`Dictionary<int, List<DepreciationScheduleItem>> schedules = await DepreciationCalculatorExtensions.CalculateDepreciationSchedulesConcurrentlyAsync(assets, 5);`
+
+5.  **Implement a custom depreciation method by extending `DepreciationCalculatorBase`:**
+
+csharpCopy code
+
+`public class CustomDepreciation : DepreciationCalculatorBase {     public CustomDepreciation(double assetCost, double salvageValue, int usefulLife)         : base(assetCost, salvageValue, usefulLife)     {     }      public override double CalculateAnnualDepreciation(int year)     {         // Custom depreciation calculation logic     }      public override async Task<double> CalculateAnnualDepreciationAsync(int year)     {         // Custom async depreciation calculation logic     } }`
+
+6.  **Handle the `DepreciationCalculated` event for logging or other purposes:**
+
+csharpCopy code
+
+`Asset asset = new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5)); asset.DepreciationCalculator.DepreciationCalculated += (sender, e) => {     Console.WriteLine($"Depreciation calculated for asset {e.AssetId}: {e.AnnualDepreciation}"); };`
+
+These instructions demonstrate the essential usage patterns for the FinancialCalcLib library. You can extend and customize the library according to your needs to perform various financial calculations.
 

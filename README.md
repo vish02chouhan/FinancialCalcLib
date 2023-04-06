@@ -134,11 +134,9 @@ csharpCopy code
 csharpCopy code
 
 `
-
 public class CustomDepreciation : DepreciationCalculatorBase
 {
-    public CustomDepreciation(double assetCost, double salvageValue, int usefulLife)
-        : base(assetCost, salvageValue, usefulLife)
+    public CustomDepreciation(double assetCost, double salvageValue, int usefulLife): base(assetCost, salvageValue, usefulLife)
     {
     }
 
@@ -152,9 +150,6 @@ public class CustomDepreciation : DepreciationCalculatorBase
         // Custom async depreciation calculation logic
     }
 }
-
-
-
 `
 
 6.  **Handle the `DepreciationCalculated` event for logging or other purposes:**

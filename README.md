@@ -21,9 +21,24 @@ Features
 Folder Structure
 ----------------
 
-Copy code
-
-`FinancialCalcLib/ ├── Depreciation/ │   ├── Calculators/ │   │   ├── IDepreciationCalculator.cs │   │   ├── DepreciationCalculatorBase.cs │   │   ├── StraightLineDepreciation.cs │   │   ├── DoubleDecliningBalanceDepreciation.cs │   │   ├── SumOfYearsDigitsDepreciation.cs │   │   └── MacrsDepreciation.cs │   ├── EventArgs/ │   │   ├── DepreciationCalculatedEventArgs.cs │   ├── Extensions/ │   │   ├── DepreciationCalculatorExtensions.cs │   └── Delegates/ │       └── DepreciationCalculatedEventHandler.cs ├── Models/ │   └── Asset.cs └── DepreciationScheduleItem.cs`
+FinancialCalcLib/ 
+├── Depreciation/
+│   ├── Calculators/
+│   │   ├── IDepreciationCalculator.cs
+│   │   ├── DepreciationCalculatorBase.cs
+│   │   ├── StraightLineDepreciation.cs
+│   │   ├── DoubleDecliningBalanceDepreciation.cs
+│   │   ├── SumOfYearsDigitsDepreciation.cs
+│   │   └── MacrsDepreciation.cs
+│   ├── EventArgs/
+│   │   ├── DepreciationCalculatedEventArgs.cs
+│   ├── Extensions/
+│   │   ├── DepreciationCalculatorExtensions.cs
+│   └── Delegates/
+│       └── DepreciationCalculatedEventHandler.cs
+├── Models/
+│   └── Asset.cs
+└── DepreciationScheduleItem.cs`
 
 Key Components
 --------------

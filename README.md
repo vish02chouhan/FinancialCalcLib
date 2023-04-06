@@ -74,10 +74,6 @@ Implements the double declining balance depreciation method, derived from the `D
 
 Implements the sum of years' digits depreciation method, derived from the `DepreciationCalculatorBase` class.
 
-##### MacrsDepreciation
-
-Implements the Modified Accelerated Cost Recovery System (MACRS) depreciation method, derived from the `DepreciationCalculatorBase` class.
-
 #### EventArgs
 
 ##### DepreciationCalculatedEventArgs
@@ -107,8 +103,6 @@ Here's an updated version of the usage section, providing step-by-step instructi
 
 1.  **Create an `Asset` object with an associated depreciation calculator:**
 
-csharpCopy code
-
 `Asset asset = new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5));`
 
 2.  **Calculate the depreciation schedule for an asset:**
@@ -126,8 +120,6 @@ Dictionary<int, List<DepreciationScheduleItem>> schedules = DepreciationCalculat
  ```
 
 4.  **Calculate the depreciation schedule for multiple assets asynchronously:**
-
-csharpCopy code
 
 `Dictionary<int, List<DepreciationScheduleItem>> schedules = await DepreciationCalculatorExtensions.CalculateDepreciationSchedulesConcurrentlyAsync(assets, 5);`
 

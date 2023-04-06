@@ -133,13 +133,43 @@ csharpCopy code
 
 csharpCopy code
 
-`public class CustomDepreciation : DepreciationCalculatorBase {     public CustomDepreciation(double assetCost, double salvageValue, int usefulLife)         : base(assetCost, salvageValue, usefulLife)     {     }      public override double CalculateAnnualDepreciation(int year)     {         // Custom depreciation calculation logic     }      public override async Task<double> CalculateAnnualDepreciationAsync(int year)     {         // Custom async depreciation calculation logic     } }`
+`
+
+public class CustomDepreciation : DepreciationCalculatorBase
+{
+    public CustomDepreciation(double assetCost, double salvageValue, int usefulLife)
+        : base(assetCost, salvageValue, usefulLife)
+    {
+    }
+
+    public override double CalculateAnnualDepreciation(int year)
+    {
+        // Custom depreciation calculation logic
+    }
+
+    public override async Task<double> CalculateAnnualDepreciationAsync(int year)
+    {
+        // Custom async depreciation calculation logic
+    }
+}
+
+
+
+`
 
 6.  **Handle the `DepreciationCalculated` event for logging or other purposes:**
 
 csharpCopy code
 
-`Asset asset = new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5)); asset.DepreciationCalculator.DepreciationCalculated += (sender, e) => {     Console.WriteLine($"Depreciation calculated for asset {e.AssetId}: {e.AnnualDepreciation}"); };`
+`
+
+Asset asset = new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5));
+asset.DepreciationCalculator.DepreciationCalculated += (sender, e) =>
+{
+    Console.WriteLine($"Depreciation calculated for asset {e.AssetId}: {e.AnnualDepreciation}");
+};
+
+`
 
 These instructions demonstrate the essential usage patterns for the FinancialCalcLib library. You can extend and customize the library according to your needs to perform various financial calculations.
 

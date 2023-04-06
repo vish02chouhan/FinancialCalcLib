@@ -155,9 +155,7 @@ public class CustomDepreciation : DepreciationCalculatorBase
 
 6.  **Handle the `DepreciationCalculated` event for logging or other purposes:**
 
-csharpCopy code
-
-`
+```
 
 Asset asset = new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5));
 asset.DepreciationCalculator.DepreciationCalculated += (sender, e) =>
@@ -165,7 +163,7 @@ asset.DepreciationCalculator.DepreciationCalculated += (sender, e) =>
     Console.WriteLine($"Depreciation calculated for asset {e.AssetId}: {e.AnnualDepreciation}");
 };
 
-`
+```
 
 These instructions demonstrate the essential usage patterns for the FinancialCalcLib library. You can extend and customize the library according to your needs to perform various financial calculations.
 

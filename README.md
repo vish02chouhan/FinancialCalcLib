@@ -4,7 +4,7 @@ FinancialCalcLib: Technical Documentation
 Overview
 --------
 
-FinancialCalcLib is a C# library for performing various financial calculations, primarily focused on asset depreciation. It offers a flexible and extensible architecture, allowing users to employ different depreciation methods and work with custom assets.
+FinancialCalcLib is a C# library for performing calculations focused on asset depreciation. It offers a flexible and extensible architecture, allowing users to employ different depreciation methods and work with custom assets.
 
 Features
 --------
@@ -13,10 +13,8 @@ Features
     *   Straight-Line Depreciation
     *   Double Declining Balance Depreciation
     *   Sum of Years' Digits Depreciation
-    *   Modified Accelerated Cost Recovery System (MACRS) Depreciation
-*   Calculates depreciation schedules for individual assets or multiple assets concurrently
 *   Provides extensibility to incorporate custom depreciation methods
-*   Asynchronous and multithreaded support for better performance
+*   Asynchronous for better performance
 
 Folder Structure
 ----------------
@@ -157,5 +155,4 @@ asset.DepreciationCalculator.DepreciationCalculated += (sender, e) =>
 
 ```
 
-These instructions demonstrate the essential usage patterns for the FinancialCalcLib library. You can extend and customize the library according to your needs to perform various financial calculations.
-
+These instructions demonstrate the essential usage patterns for the FinancialCalcLib library.

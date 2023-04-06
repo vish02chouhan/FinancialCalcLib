@@ -7,24 +7,23 @@ using System.Threading.Tasks;
 
 namespace FinancialCalcLib.Models
 {
+    using System;
+    using FinancialCalcLib.Depreciation.Calculators;
+
     public class Asset
     {
-        private string? _assetName;
-
-        public int AssetId { get; }
-        public string AssetName
-        {
-            get => _assetName ?? string.Empty;
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Asset name cannot be null or whitespace.");
-                }
-                _assetName = value;
-            }
-        }
+        public int Id { get; }
+        public string Name { get; }
         public IDepreciationCalculator DepreciationCalculator { get; }
+        public FinancialCalculationConfiguration Configuration { get; }
+
+        public Asset(int id, string name, IDepreciationCalculator depreciationCalculator, FinancialCalculationConfiguration configuration)
+        {
+            Id = id;
+            Name = name;
+            DepreciationCalculator = depreciationCalculator;
+            Configuration = configuration;
+        }
 
         /// <summary>
         /// Constructor for Asset class with DepreciationCalculator parameter of type IDepreciationCalculator interface type.
@@ -36,9 +35,26 @@ namespace FinancialCalcLib.Models
         /// <exception cref="ArgumentNullException"></exception>
         public Asset(int assetId, string assetName, IDepreciationCalculator depreciationCalculator)
         {
-            AssetId = assetId;
-            AssetName = assetName ?? throw new ArgumentNullException(nameof(assetName));
+            Id = assetId;
+            Name = assetName ?? throw new ArgumentNullException(nameof(assetName));
             DepreciationCalculator = depreciationCalculator ?? throw new ArgumentNullException(nameof(depreciationCalculator));
+        }
+
+        public double CalculateDepreciation(int year)
+        {
+            return DepreciationCalculator.CalculateAnnualDepreciation(year);
+        }
+
+        public string FormatCurrency(double value)
+        {
+            return $"{Configuration.CurrencySymbol}{value.ToString("N", Configuration.CultureInfo)}";
+        }
+
+        public void PrintDepreciation(int year)
+        {
+            double depreciation = CalculateDepreciation(year);
+            string formattedDepreciation = FormatCurrency(depreciation);
+            Console.WriteLine($"Depreciation for year {year}: {formattedDepreciation}");
         }
     }
 

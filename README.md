@@ -21,7 +21,7 @@ Features
 Folder Structure
 ----------------
 
-```
+
 FinancialCalcLib/ 
 ├── Depreciation/
 │   ├── Calculators/
@@ -40,7 +40,6 @@ FinancialCalcLib/
 ├── Models/
 │   └── Asset.cs
 └── DepreciationScheduleItem.cs
-```
 
 Key Components
 --------------

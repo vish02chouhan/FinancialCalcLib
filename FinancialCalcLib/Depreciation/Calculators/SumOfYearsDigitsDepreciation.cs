@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FinancialCalcLib.Depreciation.Calculators;
+﻿using FinancialCalcLib.Depreciation.Calculators;
 
 namespace FinancialCalcLib
 {
     /// <summary>
-    /// The SumOfYearsDigitsDepreciation class calculates the depreciation for an asset using the
-    /// Sum-of-Years'-Digits (SYD) method. This method assumes that the asset loses its value at
-    /// a constant rate over its useful life.
+    /// Sum of the Year's Digits (SYD) depreciation is an accelerated depreciation method that allocates a 
+    /// larger portion of the asset's cost to the earlier years of its useful life, and a smaller portion to
+    /// the later years.This method assumes that an asset's value depreciates more quickly in the earlier 
+    /// years of its useful life.
     /// </summary>
-
- 
     public class SumOfYearsDigitsDepreciation : IDepreciationCalculator
     {
 

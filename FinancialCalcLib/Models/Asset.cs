@@ -9,13 +9,14 @@ namespace FinancialCalcLib.Models
 {
     using System;
     using FinancialCalcLib.Depreciation.Calculators;
+    using FinancialCalcLib.Depreciation.Configuration;
 
     public class Asset
     {
         public int Id { get; }
         public string Name { get; }
         public IDepreciationCalculator DepreciationCalculator { get; }
-        public FinancialCalculationConfiguration Configuration { get; }
+        public FinancialCalculationConfiguration? Configuration { get; }
 
         public Asset(int id, string name, IDepreciationCalculator depreciationCalculator, FinancialCalculationConfiguration configuration)
         {
@@ -36,7 +37,7 @@ namespace FinancialCalcLib.Models
         public Asset(int assetId, string assetName, IDepreciationCalculator depreciationCalculator)
         {
             Id = assetId;
-            Name = assetName ?? throw new ArgumentNullException(nameof(assetName));
+            Name = assetName;
             DepreciationCalculator = depreciationCalculator ?? throw new ArgumentNullException(nameof(depreciationCalculator));
         }
 
@@ -47,6 +48,8 @@ namespace FinancialCalcLib.Models
 
         public string FormatCurrency(double value)
         {
+
+            ArgumentNullException.ThrowIfNull(Configuration, nameof(Configuration));
             return $"{Configuration.CurrencySymbol}{value.ToString("N", Configuration.CultureInfo)}";
         }
 

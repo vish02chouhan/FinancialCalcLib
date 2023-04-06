@@ -1,5 +1,8 @@
 ﻿namespace FinancialCalcLib.Depreciation.Calculators
 {
+    /// <summary>
+    /// Double declining balance depreciation is a depreciation method that assumes that the asset loses its value 
+    /// </summary>
     public class DoubleDecliningBalanceDepreciation : IDepreciationCalculator
     {
         private readonly double initialCost;

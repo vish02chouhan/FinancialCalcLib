@@ -9,4 +9,5 @@ namespace FinancialCalcLib.Depreciation.Delegates
 {
     /// <summary>  Delegate for the DepreciationCalculated event. </summary>
     public delegate void DepreciationCalculatedEventHandler(object sender, DepreciationCalculatedEventArgs e);
+
 }

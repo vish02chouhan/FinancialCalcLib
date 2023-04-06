@@ -41,6 +41,7 @@ namespace FinancialCalcLib.Depreciation.Extensions
 
             return bookValue;
         }
+        
         public static int CalculateRemainingUsefulLife(int currentYear, int totalUsefulLife)
         {
             return Math.Max(0, totalUsefulLife - currentYear);
@@ -51,6 +52,12 @@ namespace FinancialCalcLib.Depreciation.Extensions
             return calculator.CalculateAccumulatedDepreciation(usefulLife);
         }
 
+        /// <summary>
+        /// Calculates the depreciation schedule for a given asset using the specified depreciation calculator.
+        /// </summary>
+        /// <param name="calculator"></param>
+        /// <param name="usefulLife"></param>
+        /// <returns></returns>
         public static List<DepreciationScheduleItem> CalculateDepreciationSchedule(this IDepreciationCalculator calculator, int usefulLife)
         {
             var schedule = new List<DepreciationScheduleItem>();
@@ -78,8 +85,6 @@ namespace FinancialCalcLib.Depreciation.Extensions
                 AccumulatedDepreciation = accumulatedDepreciation;
             }
         }
-
-
-
+        
     }
 }

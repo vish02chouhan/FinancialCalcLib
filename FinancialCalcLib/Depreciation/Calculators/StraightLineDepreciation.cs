@@ -1,4 +1,6 @@
-﻿namespace FinancialCalcLib.Depreciation.Calculators
+﻿using FinancialCalcLib.Depreciation.Delegates;
+
+namespace FinancialCalcLib.Depreciation.Calculators
 {
 
 
@@ -12,11 +14,15 @@
         private readonly double residualValue;
         private readonly int usefulLife;
 
-        public StraightLineDepreciation(double initialCost, double residualValue, int usefulLife)
+        private readonly Func<double, double>? modifier;
+
+        public StraightLineDepreciation(double initialCost, double residualValue, int usefulLife, Func<double, double>? modifier = null)
         {
             this.initialCost = initialCost;
             this.residualValue = residualValue;
             this.usefulLife = usefulLife;
+            this.modifier = modifier;
+
         }
 
         /// <summary>
@@ -26,11 +32,20 @@
         /// <returns></returns>
         public override double CalculateAnnualDepreciation(int year)
         {
+
             double depreciation = (initialCost - residualValue) / usefulLife;
-            OnDepreciationCalculated(year, depreciation);
-            return depreciation;
+
+            double totalDepreciation = year * depreciation;
+            // Apply the modifier if provided
+            if (modifier != null)
+            {
+                depreciation = modifier(depreciation);
+            }
+
+
+            return Math.Min(depreciation, initialCost);
         }
-        
+
     }
 
 }

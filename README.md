@@ -113,15 +113,17 @@ csharpCopy code
 
 2.  **Calculate the depreciation schedule for an asset:**
 
-csharpCopy code
-
 `List<DepreciationScheduleItem> schedule = asset.DepreciationCalculator.CalculateDepreciationSchedule(5);`
 
 3.  **Calculate the depreciation schedule for multiple assets concurrently:**
 
-csharpCopy code
-
-`List<Asset> assets = new List<Asset> {     new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5)),     new Asset(2, "Printer", new DoubleDecliningBalanceDepreciation(500, 50, 5)) };  Dictionary<int, List<DepreciationScheduleItem>> schedules = DepreciationCalculatorExtensions.CalculateDepreciationSchedulesConcurrently(assets, 5);`
+`
+List<Asset> assets = new List<Asset> {    
+   new Asset(1, "Computer", new StraightLineDepreciation(1000, 100, 5)),     
+   new Asset(2, "Printer", new DoubleDecliningBalanceDepreciation(500, 50, 5)) 
+   }; 
+Dictionary<int, List<DepreciationScheduleItem>> schedules = DepreciationCalculatorExtensions.CalculateDepreciationSchedulesConcurrently(assets, 5);
+ `
 
 4.  **Calculate the depreciation schedule for multiple assets asynchronously:**
 

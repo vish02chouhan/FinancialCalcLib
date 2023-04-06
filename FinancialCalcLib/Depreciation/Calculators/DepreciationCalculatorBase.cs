@@ -1,7 +1,7 @@
 ﻿using FinancialCalcLib.Depreciation.Delegates;
 using FinancialCalcLib.Depreciation.EventArgs;
 
-namespace FinancialCalcLib.Depreciation.Depreciation
+namespace FinancialCalcLib.Depreciation.Calculators
 {
     public abstract class DepreciationCalculatorBase : IDepreciationCalculator
     {

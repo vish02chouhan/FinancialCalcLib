@@ -1,4 +1,4 @@
-﻿namespace FinancialCalcLib.Depreciation.Depreciation
+﻿namespace FinancialCalcLib.Depreciation.Calculators
 {
 
     public interface IDepreciationCalculator

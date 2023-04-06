@@ -1,4 +1,4 @@
-﻿namespace FinancialCalcLib.Depreciation.Depreciation
+﻿namespace FinancialCalcLib.Depreciation.Calculators
 {
     public class DoubleDecliningBalanceDepreciation : IDepreciationCalculator
     {
@@ -19,6 +19,11 @@
         {
             double bookValue = initialCost - (year - 1) * CalculateAnnualDepreciation(year - 1);
             return Math.Max(0, Math.Min(bookValue - residualValue, depreciationRate * bookValue));
+        }
+
+        public Task<double> CalculateAnnualDepreciationAsync(int year)
+        {
+            return Task.Run(() => CalculateAnnualDepreciation(year));
         }
     }
 

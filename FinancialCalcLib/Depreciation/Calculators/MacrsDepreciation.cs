@@ -1,4 +1,4 @@
-﻿namespace FinancialCalcLib.Depreciation.Depreciation
+﻿namespace FinancialCalcLib.Depreciation.Calculators
 {
     // This implementation of MACRS assumes that the depreciation rates are provided externally.
     public class MacrsDepreciation : IDepreciationCalculator

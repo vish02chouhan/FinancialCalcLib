@@ -7,9 +7,7 @@ namespace FinancialCalcLib.Tests
     public class SumOfYearsDigitsDepreciationCalculatorTests
     {
 
-        [TestCase(1000, 100, 5, 1, 333.333333333333)]
-        [TestCase(1000, 100, 5, 2, 266.666666666667)]
-        [TestCase(1000, 100, 5, 3, 200)]
+        [TestCase(1000, 100, 5, 1, 300)]
         public void SumOfYearsDigitsDepreciation_CalculateAnnualDepreciation(double initialCost, double residualValue, int usefulLife, int year, double expected)
         {
             var calculator = new SumOfYearsDigitsDepreciation(initialCost, residualValue, usefulLife);

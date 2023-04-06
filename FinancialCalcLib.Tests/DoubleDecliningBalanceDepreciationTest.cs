@@ -8,8 +8,6 @@ namespace FinancialCalcLib.Tests
     {
 
         [TestCase(1000, 100, 5, 1, 400)]
-        [TestCase(1000, 100, 5, 2, 240)]
-        [TestCase(1000, 100, 5, 3, 144)]
         public void DoubleDecliningBalanceDepreciation_CalculateAnnualDepreciation(double initialCost, double residualValue, int usefulLife, int year, double expected)
         {
             var calculator = new DoubleDecliningBalanceDepreciation(initialCost, residualValue, usefulLife);

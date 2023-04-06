@@ -20,6 +20,10 @@
 
         public double CalculateAnnualDepreciation(int year)
         {
+            if (year < 1 || year > usefulLife)
+            {
+                return 0;
+            }
             double bookValue = initialCost - (year - 1) * CalculateAnnualDepreciation(year - 1);
             return Math.Max(0, Math.Min(bookValue - residualValue, depreciationRate * bookValue));
         }

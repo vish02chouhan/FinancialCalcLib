@@ -47,44 +47,6 @@ namespace FinancialCalcLib.Depreciation.Extensions
             return Math.Max(0, totalUsefulLife - currentYear);
         }
 
-        public static double CalculateTotalDepreciationExpense(this IDepreciationCalculator calculator, int usefulLife)
-        {
-            return calculator.CalculateAccumulatedDepreciation(usefulLife);
-        }
-
-        /// <summary>
-        /// Calculates the depreciation schedule for a given asset using the specified depreciation calculator.
-        /// </summary>
-        /// <param name="calculator"></param>
-        /// <param name="usefulLife"></param>
-        /// <returns></returns>
-        public static List<DepreciationScheduleItem> CalculateDepreciationSchedule(this IDepreciationCalculator calculator, int usefulLife)
-        {
-            var schedule = new List<DepreciationScheduleItem>();
-
-            for (int year = 1; year <= usefulLife; year++)
-            {
-                double annualDepreciation = calculator.CalculateAnnualDepreciation(year);
-                double accumulatedDepreciation = calculator.CalculateAccumulatedDepreciation(year);
-                schedule.Add(new DepreciationScheduleItem(year, annualDepreciation, accumulatedDepreciation));
-            }
-
-            return schedule;
-        }
-
-        public class DepreciationScheduleItem
-        {
-            public int Year { get; }
-            public double AnnualDepreciation { get; }
-            public double AccumulatedDepreciation { get; }
-
-            public DepreciationScheduleItem(int year, double annualDepreciation, double accumulatedDepreciation)
-            {
-                Year = year;
-                AnnualDepreciation = annualDepreciation;
-                AccumulatedDepreciation = accumulatedDepreciation;
-            }
-        }
-        
+ 
     }
 }

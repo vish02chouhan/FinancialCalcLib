@@ -39,11 +39,11 @@ namespace FinancialCalcLib.Depreciation.Calculators
             // Apply the modifier if provided
             if (modifier != null)
             {
-                depreciation = modifier(depreciation);
+                totalDepreciation = modifier(totalDepreciation);
             }
 
 
-            return Math.Min(depreciation, initialCost);
+            return Math.Min(totalDepreciation, initialCost);
         }
 
     }

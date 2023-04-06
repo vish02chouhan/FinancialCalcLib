@@ -1,15 +1,26 @@
 ﻿using FinancialCalcLib.Depreciation.Calculators;
 using FinancialCalcLib.Models;
+using NUnit.Framework;
 
 namespace FinancialCalcLib.Tests
 {
     public class AssetTests
     {
+        private IDepreciationCalculator calculator;
+
+        [SetUp]
+        public void Setup()
+        {
+            double initialCost = 1000;
+            double residualValue = 100;
+            int usefulLife = 5;
+            calculator = new StraightLineDepreciation(initialCost, residualValue, usefulLife);
+        }
+
         [Test]
         public void Asset_Constructor_SetsProperties()
         {
             // Arrange
-            var calculator = new StraightLineDepreciation(1000, 100, 5);
             var asset = new Asset(1, "Computer", calculator);
 
             // Act
@@ -21,8 +32,20 @@ namespace FinancialCalcLib.Tests
             Assert.That(asset.DepreciationCalculator, Is.EqualTo(calculator));
         }
 
-        // Add more tests for other methods and edge cases
-    }
 
-    // Create more test classes for other components
+        [Test]
+        public void Asset_GetAccumulatedDepreciation_CorrectValue()
+        {
+            // Arrange
+            var asset = new Asset(1, "Computer", calculator);
+
+            // Act
+            double accumulatedDepreciation = asset.CalculateDepreciation(3);
+
+            // Assert
+            Assert.That(accumulatedDepreciation, Is.EqualTo(540.0));
+        }
+
+
+    }
 }

@@ -14,8 +14,6 @@ Features
     *   Double Declining Balance Depreciation
     *   Sum of Years' Digits Depreciation
 *   Provides extensibility to incorporate custom depreciation methods
-*   Asynchronous for better performance
-
 Folder Structure
 ----------------
 
